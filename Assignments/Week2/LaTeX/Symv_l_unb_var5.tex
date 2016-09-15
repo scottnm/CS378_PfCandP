@@ -30,16 +30,12 @@
 
 \resetsteps % set all definitions
 
-\begin{center}
-	\FlaWorksheet
-\end{center}
-
 
 \resetsteps      % Reset all the commands to create a blank worksheet  
 
 % Define the operation to be computed
 
-\renewcommand{\operation}{ \left[ y \right] := \mbox{\sc sym\_axpy\_unb\_var1}( A, x, y ) }
+\renewcommand{\operation}{ \left[ y \right] := \mbox{\sc symv\_l\_unb\_var5}( A, x, y ) }
 
 \renewcommand{\routinename}{\operation}
 
@@ -52,7 +48,11 @@
 % Step 1b: Postcondition 
 
 \renewcommand{\postcondition}{ 
-	\left[y \right] = Ax + y
+	\left[y \right]
+	=
+	\mbox{symv\_l}( A, x, \widehat{y} )
+	= 
+	Ax + \widehat{y}
 }
 
 % Step 2: Invariant 
@@ -61,14 +61,14 @@
 \renewcommand{\invariant}{
 	\FlaTwoByOne{y_T}
 	{y_B} = 
-	\FlaTwoByOne{A_{TL}X_T + \widehat{y}_T}
-	{\widehat{y}_B}
+	\FlaTwoByOne{\widehat{y}_T}
+	{\widehat{y}_B + A_{BR}x_B}
 }
 
 % Step 3: Loop-guard 
 
 \renewcommand{\guard}{
-	m( A_{TL} ) < m( A )
+	m( A_{BR} ) < m( A )
 }
 
 % Step 4: Initialize 
@@ -94,9 +94,9 @@
 }
 
 \renewcommand{\partitionsizes}{
-	$ A_{TL} $ is $ 0 \times 0 $,
-	$ x_T $ has $ 0 $ rows,
-	$ y_T $ has $ 0 $ rows
+	$ A_{BR} $ is $ 0 \times 0 $,
+	$ x_B $ has $ 0 $ rows,
+	$ y_B $ has $ 0 $ rows
 }
 
 % Step 5a: Repartition the operands 
@@ -105,14 +105,14 @@
 	$  \FlaTwoByTwo{A_{TL}}{A_{TR}}
 	{A_{BL}}{A_{BR}}
 	\rightarrow
-	\FlaThreeByThreeBR{A_{00}}{a_{01}}{A_{02}}
+	\FlaThreeByThreeTL{A_{00}}{a_{01}}{A_{02}}
 	{a_{10}^T}{\alpha_{11}}{a_{12}^T}
 	{A_{20}}{a_{21}}{A_{22}}
 	$,
 	$  \FlaTwoByOne{ x_T }
 	{ x_B }
 	\rightarrow
-	\FlaThreeByOneB{x_0}
+	\FlaThreeByOneT{x_0}
 	{\chi_1}
 	{x_2}
 	$
@@ -120,7 +120,7 @@
 	$  \FlaTwoByOne{ y_T }
 	{ y_B }
 	\rightarrow
-	\FlaThreeByOneB{y_0}
+	\FlaThreeByOneT{y_0}
 	{\psi_1}
 	{y_2}
 	$
@@ -137,14 +137,14 @@
 	$  \FlaTwoByTwo{A_{TL}}{A_{TR}}
 	{A_{BL}}{A_{BR}}
 	\leftarrow
-	\FlaThreeByThreeTL{A_{00}}{a_{01}}{A_{02}}
+	\FlaThreeByThreeBR{A_{00}}{a_{01}}{A_{02}}
 	{a_{10}^T}{\alpha_{11}}{a_{12}^T}
 	{A_{20}}{a_{21}}{A_{22}}
 	$,
 	$  \FlaTwoByOne{ x_T }
 	{ x_B }
 	\leftarrow
-	\FlaThreeByOneT{x_0}
+	\FlaThreeByOneB{x_0}
 	{\chi_1}
 	{x_2}
 	$
@@ -152,7 +152,7 @@
 	$  \FlaTwoByOne{ y_T }
 	{ y_B }
 	\leftarrow
-	\FlaThreeByOneT{y_0}
+	\FlaThreeByOneB{y_0}
 	{\psi_1}
 	{y_2}
 	$
@@ -162,25 +162,28 @@
 % Note: The below needs editing!!!
 
 \renewcommand{\beforeupdate}{
-	\FlaThreeByOneB{y_0}
+	\FlaThreeByOneT{y_0}
 	{\psi_1}
 	{y_2}
 	=
-	\FlaThreeByOneB {A_{00}x_0 + \widehat{y}_0}
+	\FlaThreeByOneT
+	{\widehat{y_0}}
 	{\widehat{\psi_1}}
-	{\widehat{y}_2}
+	{\widehat{y_2} + A_{22}x_2}
 }
 
 % Step 7: State after moving of double lines
 % Note: The below needs editing!!!
 
 \renewcommand{\afterupdate}{
-	\FlaThreeByOneT{y_0}
+	\FlaThreeByOneB{y_0}
 	{\psi_1}
-	{y_2} = 
-	\FlaThreeByOneT {A_{00}x_0 + (a_{10}^T)^T\chi_1 + \widehat{y}_0}
-	{a_{10}^Tx_0 + a_{11}\chi_1 + \widehat{\psi}_1}
-	{\widehat{y}_2}
+	{y_2}
+	=
+	\FlaThreeByOneB
+	{\widehat{y_0}}
+	{\widehat{\psi_1} + a_{11}\chi_1 + a_{21}^Tx_2}
+	{\widehat{y}_2 + a_{21}\chi_1 + A_{22}x_2}
 }
 
 % Step 8: Insert the updates required to change the 
@@ -188,20 +191,11 @@
 % Note: The below needs editing!!!
 
 \renewcommand{\update}{
-	$
-	\FlaThreeByOneB{y_0}
-	{\psi_1}
-	{y_2}
-	:=
-	\FlaThreeByOneB {y_0}
-	{\psi_1}
-	{y_2}
-	+
-	\FlaThreeByOneB
-	{(a_{10}^T)^T\chi_1}
-	{a_{10}^Tx_0 + a_{11}\chi_1}
-	{0}
-	$
+
+	$\psi_1 := \psi_1 + a_{11}\chi_1 + a_{21}^Tx_2$
+	
+	$y_2 := y_2 + a_{21}\chi_1$
+
 }
 
 \begin{figure}[p]

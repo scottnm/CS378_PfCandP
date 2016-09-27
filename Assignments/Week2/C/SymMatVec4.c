@@ -53,8 +53,14 @@ int SymMatVec_unb_var4( FLA_Obj A, FLA_Obj x, FLA_Obj y )
 
     /*------------------------------------------------------------*/
 
-    FLA_Axpy( chi1, a10t, y0 );
-    FLA_Dots( FLA_ONE, a10t, y0, alpha11, psi1 );
+    // psi = alpha11 * chi1 + psi1
+    FLA_Dots(FLA_ONE, alpha11, chi1, FLA_ONE, psi1);
+
+    // psi = a21' * x2 + psi1
+    FLA_Dots(FLA_ONE, a21, x2, FLA_ONE, psi1);
+
+    //FLA_Dot(a21, x2, psi1);
+    FLA_Axpy(chi1, a21, y2);
 
     /*------------------------------------------------------------*/
 

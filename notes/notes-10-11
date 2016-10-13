@@ -1,0 +1,33 @@
+{R}
+skip
+{R}
+wp(skip, R) = R
+
+{F}
+abort
+{R}
+wp(abort, R) = F
+
+{wp(s0, wp(s1, R))}
+s0
+{wp(s1, R)}
+s1
+{R}
+
+wp(s0, s1, R)
+= wp(s0, wp(s1, R))
+
+some properties
+1. law of distribution of conjunction => [wp(s, p) ^ wp(s, r) = wp(s, q ^ r)]
+2. law of excluded miracle => [wp(s, F) = F]
+
+the law of monotonicity => [q -> r then wp(s, q) -> wp(s, r)]
+
+introducing assignment
+
+{
+    what is the weakest precondition such that y := x +2 leaves us in the state wehere y  between 0 and 5
+    wp {y:=x+2, 0<=y<5} = 0 <= x+2 < 5
+}
+y := x + 2
+{0 <= y < 5}

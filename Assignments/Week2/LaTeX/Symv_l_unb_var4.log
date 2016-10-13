@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2016.9.2)  16 SEP 2016 20:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2016.9.2)  16 SEP 2016 21:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**./Symv_l_unb_var5.tex
-(./Symv_l_unb_var5.tex
+**./Symv_l_unb_var4.tex
+(./Symv_l_unb_var4.tex
 LaTeX2e <2016/03/31> patch level 3
 Babel <3.9r> and hyphenation patterns for 47 language(s) loaded.
 (c:/texlive/2016/texmf-dist/tex/latex/base/book.cls
@@ -104,20 +104,20 @@ Package minitoc Info: I0003
 \mtc@hstrutbox=\box27
 Package minitoc Info: I0002
 (minitoc)             Autoconfiguration of extensions.
-\openout3 = `Symv_l_unb_var5.mtc0'.
+\openout3 = `Symv_l_unb_var4.mtc0'.
 
-\openout3 = `Symv_l_unb_var5.mtc'.
+\openout3 = `Symv_l_unb_var4.mtc'.
 
 
-(./Symv_l_unb_var5.mtc0)
+(./Symv_l_unb_var4.mtc0)
 Package minitoc Info: I0012
 (minitoc)             Long extensions (Unix-like) will be used.
 Package minitoc Info: I0031
 (minitoc)             ==> this version is configured for UNIX-like 
 (minitoc)                 (long extensions) file names.
-\openout3 = `Symv_l_unb_var5.mtc'.
+\openout3 = `Symv_l_unb_var4.mtc'.
 
-\openout3 = `Symv_l_unb_var5.mtc0'.
+\openout3 = `Symv_l_unb_var4.mtc0'.
 
 \c@mtc=\count90
 \c@minitocdepth=\count91
@@ -136,8 +136,8 @@ File: english.mld 2006/01/13
 ))
 (../../../FLaTeX/color_flatex.tex
 \savedwidth=\skip49
-) (./Symv_l_unb_var5.aux)
-\openout1 = `Symv_l_unb_var5.aux'.
+) (./Symv_l_unb_var4.aux)
+\openout1 = `Symv_l_unb_var4.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 27.
 LaTeX Font Info:    ... okay on input line 27.
@@ -169,93 +169,100 @@ LaTeX Font Info:    ... okay on input line 27.
 Package minitoc(hints) Info: I0049
 (minitoc(hints))             ==> You requested the hints option. 
 (minitoc(hints))             Some hints are eventually given below.
-LaTeX Font Info:    Try loading font information for U+msa on input line 203.
+LaTeX Font Info:    Try loading font information for U+msa on input line 34.
  (c:/texlive/2016/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 203.
+LaTeX Font Info:    Try loading font information for U+msb on input line 34.
 
 (c:/texlive/2016/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Overfull \hbox (37.927pt too wide) in paragraph at lines 203--204
+Overfull \hbox (37.927pt too wide) in paragraph at lines 34--35
  [] 
  []
 
 
-Overfull \hbox (37.927pt too wide) in paragraph at lines 219--220
+Overfull \hbox (37.927pt too wide) in paragraph at lines 215--216
+ [] 
+ []
+
+[1
+
+{c:/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
+Overfull \hbox (37.927pt too wide) in paragraph at lines 231--232
  [] 
  []
 
 
-Overfull \hbox (37.927pt too wide) in paragraph at lines 227--228
+Overfull \hbox (37.927pt too wide) in paragraph at lines 239--240
  [] 
  []
 
 
-Overfull \hbox (37.927pt too wide) in paragraph at lines 237--238
+Overfull \hbox (37.927pt too wide) in paragraph at lines 249--250
  [] 
  []
 
 
-Overfull \hbox (37.927pt too wide) in paragraph at lines 245--246
+Overfull \hbox (37.927pt too wide) in paragraph at lines 257--258
  [] 
  []
 
 
-Overfull \hbox (37.927pt too wide) in paragraph at lines 253--254
+Overfull \hbox (37.927pt too wide) in paragraph at lines 265--266
  [] 
  []
 
 
-Overfull \hbox (37.927pt too wide) in paragraph at lines 261--262
+Overfull \hbox (37.927pt too wide) in paragraph at lines 273--274
  [] 
  []
 
 
-Overfull \hbox (37.927pt too wide) in paragraph at lines 269--270
+Overfull \hbox (37.927pt too wide) in paragraph at lines 281--282
  [] 
  []
 
 
-Overfull \hbox (37.927pt too wide) in paragraph at lines 277--278
+Overfull \hbox (37.927pt too wide) in paragraph at lines 289--290
  [] 
  []
 
 
-Overfull \hbox (37.927pt too wide) in paragraph at lines 285--286
+Overfull \hbox (37.927pt too wide) in paragraph at lines 297--298
  [] 
  []
 
 Package minitoc Info: I0009
 (minitoc)             Listing minitoc auxiliary files. 
-(minitoc)             Creating the Symv_l_unb_var5.maf file.
-\openout3 = `Symv_l_unb_var5.maf'.
+(minitoc)             Creating the Symv_l_unb_var4.maf file.
+\openout3 = `Symv_l_unb_var4.maf'.
 
 Package minitoc(hints) Info: I0019
 (minitoc(hints))             No hints have been written 
-(minitoc(hints))             in the Symv_l_unb_var5.log file..
-[1{c:/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
-[4] [5] [6] [7] [8] [9] [10] [11] [12] (./Symv_l_unb_var5.aux) ) 
+(minitoc(hints))             in the Symv_l_unb_var4.log file..
+[3] [4] [5] [6] [7] [8] [9] [10] [11] [12] [13] (./Symv_l_unb_var4.aux) ) 
 Here is how much of TeX's memory you used:
  3444 strings out of 494113
  44157 string characters out of 6156827
- 279522 words of memory out of 5000000
+ 266704 words of memory out of 5000000
  6629 multiletter control sequences out of 15000+600000
  8586 words of font info for 33 fonts, out of 8000000 for 9000
  430 hyphenation exceptions out of 8191
- 41i,25n,37p,228b,391s stack positions out of 5000i,500n,10000p,200000b,80000s
-<c:/texlive/201
-6/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><c:/texlive/2016/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2016/texmf-dist/font
-s/type1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2016/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmmi8.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmr12.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-r8.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on Symv_l_unb_var5.pdf (12 pages, 99666 bytes).
+ 41i,25n,41p,228b,391s stack positions out of 5000i,500n,10000p,200000b,80000s
+<c:/te
+xlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><c:/texlive/20
+16/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2016/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2016/texmf-dist/font
+s/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2016/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmr12.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmr8.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
+10.pfb>
+Output written on Symv_l_unb_var4.pdf (13 pages, 101709 bytes).
 PDF statistics:
- 71 PDF objects out of 1000 (max. 8388607)
- 49 compressed objects within 1 object stream
+ 75 PDF objects out of 1000 (max. 8388607)
+ 52 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

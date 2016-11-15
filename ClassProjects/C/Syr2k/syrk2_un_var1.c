@@ -7,7 +7,10 @@
                   
                                                                      */
 
+#define UPLO FLA_UPPER_TRIANGULAR
+#define TRANS FLA_NO_TRANSPOSE
 #include "syrk2_un_var1.h"
+#include <assert.h>
 
 int Syrk2_un_unb_var1( FLA_Obj A, FLA_Obj B, FLA_Obj C )
 {
@@ -52,9 +55,14 @@ int Syrk2_un_unb_var1( FLA_Obj A, FLA_Obj B, FLA_Obj C )
 
     /*------------------------------------------------------------*/
 
-    /*                       update line 1                        */
-    /*                             :                              */
-    /*                       update line n                        */
+
+    //c01 = A0*transpose(b1t) + B0*transpose(a1t) + c01;
+    FLA_Gemv(TRANS, FLA_ONE, A0, b1t, FLA_ONE, c01);
+    FLA_Gemv(TRANS, FLA_ONE, B0, a1t, FLA_ONE, c01);
+
+    //gamma11 = a1t*transpose(b1t) +  b1t*transpose(a1t) + gamma11;
+    FLA_Dots(FLA_ONE, a1t, b1t, FLA_ONE, gamma11);
+    FLA_Dots(FLA_ONE, a1t, b1t, FLA_ONE, gamma11);
 
     /*------------------------------------------------------------*/
 

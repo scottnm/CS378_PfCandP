@@ -5,19 +5,15 @@
 #include "FLAME.h"
 
 #include "cblas.h"
+#include "syrk2_un_var1.h"
 
-#define UPLO FLA_LOWER_TRIANGULAR
+#define UPLO FLA_UPPER_TRIANGULAR
 #define TRANS FLA_NO_TRANSPOSE
 
 /* Various constants that control what gets timed */
 
 #define TRUE 1
 #define FALSE 0
-
-void Symm_xx_var1( FLA_Obj, FLA_Obj, FLA_Obj );
-void Symm_xx_var2( FLA_Obj, FLA_Obj, FLA_Obj );
-void Symm_xx_var3( FLA_Obj, FLA_Obj, FLA_Obj );
-void Symm_xx_var4( FLA_Obj, FLA_Obj, FLA_Obj );
 
 int main(int argc, char *argv[])
 {
@@ -100,8 +96,7 @@ int main(int argc, char *argv[])
       dtime = FLA_Clock();
  
       /* Comment out the below call and call your routine instead */
-      FLA_Syr2k( UPLO, TRANS, FLA_ONE, Aobj, Bobj, FLA_ONE, Cobj );
-      //      Syr2k_xx_unb_var1( Aobj, Bobj, Cobj );
+      Syrk2_un_unb_var1( Aobj, Bobj, Cobj );
 
       /* stop clock */
       dtime = FLA_Clock() - dtime;
@@ -131,3 +126,4 @@ int main(int argc, char *argv[])
 
   exit( 0 );
 }
+

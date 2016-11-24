@@ -61,8 +61,7 @@ int syrk2_un_unb_var1( FLA_Obj A, FLA_Obj B, FLA_Obj C )
     FLA_Gemv(TRANS, FLA_ONE, B0, a1t, FLA_ONE, c01);
 
     //gamma11 = a1t*transpose(b1t) +  b1t*transpose(a1t) + gamma11;
-    FLA_Dots(FLA_ONE, a1t, b1t, FLA_ONE, gamma11);
-    FLA_Dots(FLA_ONE, a1t, b1t, FLA_ONE, gamma11);
+    FLA_Dots(FLA_TWO, a1t, b1t, FLA_ONE, gamma11);
 
     /*------------------------------------------------------------*/
 

@@ -1,5 +1,5 @@
-#ifndef __SYRK2_H__
-#define __SYRK2_H__
+#ifndef __SYRK2_UN_V1_H__
+#define __SYRK2_UN_V1_H__
 
 #include "FLAME.h"
 

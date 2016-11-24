@@ -21,7 +21,7 @@ LDFLAGS    := -lpthread -m64 -lm
 
 # indicate where the FLAME include files reside
 
-TEST_OBJS  := driver.o syrk2_un_var1.o # add files in which your implementations are coded
+TEST_OBJS  := driver.o UnblockedVar1/syrk2_un_var1.o BlockedVar1/syrk2_blk_var1.o # add files in which your implementations are coded
 
 # $%.o: %.c
 #	$(CC) $(CFLAGS) -c $< -o $@

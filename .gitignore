@@ -4,3 +4,6 @@
 *.mtc
 *.mtc0
 *.synctex.gz
+.*.*.swp
+.nfs*
+output.m

@@ -1,0 +1,275 @@
+\documentclass[12pt]{book}
+
+\usepackage{amssymb}
+\usepackage{ifthen}
+\usepackage[table]{xcolor}
+\usepackage{minitoc}
+\usepackage{array}
+
+\definecolor{yellow}{cmyk}{0,0,1,0}
+\renewcommand{\arraystretch}{1.4}
+\newcommand{\R}{\mathbb{R}}
+
+\usepackage{colortbl}
+
+% Page size
+\setlength{\oddsidemargin}{-0.5in}
+\setlength{\evensidemargin}{-0.5in}
+\setlength{\textheight}{10.25in}
+\setlength{\textwidth}{7.0in}
+\setlength{\topmargin}{-1.35in}
+
+\renewcommand{\arraycolsep}{1pt}
+
+
+\input color_flatex
+
+\begin{document}
+	\pagestyle{empty}
+	
+	
+	\resetsteps      % Reset all the commands to create a blank worksheet  
+	
+	% Define the operation to be computed
+	
+	\renewcommand{\operation}{ \left[ B \right] := \mbox{\sc trmm\_blk\_var1}( L, B ) }
+	
+	\renewcommand{\routinename}{\operation}
+	
+	% Step 1a: Precondition 
+	
+	\renewcommand{\precondition}{
+		B = \widehat{B}
+	}
+	
+	% Step 1b: Postcondition 
+	
+	\renewcommand{\postcondition}{ 
+		\left[B \right]
+		=
+		\mbox{trmm}( L, \widehat{B} )
+	}
+	
+	% Step 2: Invariant 
+	% Note: Right-hand side of equalities must be updated appropriately
+	
+	\renewcommand{\invariant}{
+		\FlaTwoByOne{B_T}
+		{B_B} = 
+		\FlaTwoByOne{\widehat{B}_T}
+		{\widehat{B}_B}
+	}
+	
+	% Step 3: Loop-guard 
+	
+	\renewcommand{\guard}{
+		m( L_{BR} ) < m( L )
+	}
+	
+	% Step 4: Initialize 
+	
+	\renewcommand{\partitionings}{
+		$
+		L \rightarrow
+		\FlaTwoByTwo{L_{TL}}{L_{TR}}
+		{L_{BL}}{L_{BR}}
+		$
+		,
+		$
+		B \rightarrow
+		\FlaTwoByOne{B_{T}}
+		{B_{B}}
+		$
+	}
+	
+	\renewcommand{\partitionsizes}{
+		$ L_{BR} $ is $ 0 \times 0 $,
+		$ B_B $ has $ 0 $ rows
+	}
+	
+	% Step 5a: Repartition the operands 
+	
+	\renewcommand{\blocksize}{b}
+	
+	\renewcommand{\repartitionings}{
+		$  \FlaTwoByTwo{L_{TL}}{L_{TR}}
+		{L_{BL}}{L_{BR}}
+		\rightarrow
+		\FlaThreeByThreeTL{L_{00}}{L_{01}}{L_{02}}
+		{L_{10}}{L_{11}}{L_{12}}
+		{L_{20}}{L_{21}}{L_{22}}
+		$,
+		$  \FlaTwoByOne{ B_T }
+		{ B_B }
+		\rightarrow
+		\FlaThreeByOneT{B_0}
+		{B_1}
+		{B_2}
+		$
+	}
+	
+	\renewcommand{\repartitionsizes}{
+		$ L_{11} $ is $ b \times b $,
+		$ B_1 $ has $ b $ rows}
+	
+	% Step 5b: Move the double lines 
+	
+	\renewcommand{\moveboundaries}{
+		$  \FlaTwoByTwo{L_{TL}}{L_{TR}}
+		{L_{BL}}{L_{BR}}
+		\leftarrow
+		\FlaThreeByThreeBR{L_{00}}{L_{01}}{L_{02}}
+		{L_{10}}{L_{11}}{L_{12}}
+		{L_{20}}{L_{21}}{L_{22}}
+		$,
+		$  \FlaTwoByOne{ B_T }
+		{ B_B }
+		\leftarrow
+		\FlaThreeByOneB{B_0}
+		{B_1}
+		{B_2}
+		$
+	}
+	
+	% Step 6: State after repartitioning
+	% Note: The below needs editing!!!
+	
+	\renewcommand{\beforeupdate}{
+		\FlaThreeByOneT{B_0}
+		{B_1}
+		{B_2}
+		=
+		\FlaThreeByOneT
+		{\widehat{B_0}}
+		{B_1}
+		{L_{22}\widehat{B_2}}
+	}
+	
+	% Step 7: State after moving of double lines
+	% Note: The below needs editing!!!
+	
+	\renewcommand{\afterupdate}{
+		\FlaThreeByOneB{B_0}
+		{B_1}
+		{B_2}
+		=
+		\FlaThreeByOneB
+		{\widehat{B_0}}
+		{L_{11}\widehat{B_1}}
+		{L_{21}\widehat{B_1} + L_{22}\widehat{B_2}}
+	}
+	
+	% Step 8: Insert the updates required to change the 
+	%         state from that given in Step 6 to that given in Step 7
+	% Note: The below needs editing!!!
+	
+	\renewcommand{\update}{
+		$
+		
+		B_2 := L_{21}B_1 + B_2
+		
+		B_1 := L_{11}B_1
+		
+		$
+		
+	}
+	
+	
+	
+	\begin{figure}[p]
+		\begin{center} 
+			\FlaWorksheet
+		\end{center}
+	\end{figure}
+	
+	\newpage 
+	
+	\begin{figure}[p]
+		\begin{center}
+			\FlaAlgorithm 
+		\end{center}
+	\end{figure}
+	
+	\newpage 
+	
+	\begin{figure}[p]
+		\begin{center}
+			\FlaWorksheetOne
+		\end{center}
+	\end{figure}
+	
+	\newpage 
+	
+	\begin{figure}[p]
+		\begin{center}
+			\FlaWorksheetTwo
+		\end{center}
+	\end{figure}
+	
+	
+	
+	\newpage 
+	
+	\begin{figure}[p]
+		\begin{center}
+			\FlaWorksheetThree
+		\end{center}
+	\end{figure}
+	
+	\newpage 
+	
+	\begin{figure}[p]
+		\begin{center}
+			\FlaWorksheetFour    
+		\end{center}
+	\end{figure}
+	
+	\newpage 
+	
+	\begin{figure}[p]
+		\begin{center}
+			\FlaWorksheetFive
+		\end{center}
+	\end{figure}
+	
+	\newpage 
+	
+	\begin{figure}[p]
+		\begin{center}
+			\FlaWorksheetSix
+		\end{center}
+	\end{figure}
+	
+	\newpage 
+	
+	\begin{figure}[p]
+		\begin{center}
+			\FlaWorksheetSeven
+		\end{center}
+	\end{figure}
+	
+	\newpage 
+	
+	\begin{figure}[p]
+		\begin{center}
+			\FlaWorksheetEight
+		\end{center}
+	\end{figure}
+	
+	\newpage 
+	
+	\begin{figure}[p]
+		\begin{center}
+			\FlaWorksheetNine
+		\end{center}
+	\end{figure}
+	
+	\newpage 
+	
+	\begin{figure}[p]
+		\begin{center}
+			\FlaAlgorithm 
+		\end{center}
+	\end{figure}
+	
+\end{document}

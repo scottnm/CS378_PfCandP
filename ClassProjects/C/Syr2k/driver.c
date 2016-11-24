@@ -6,6 +6,7 @@
 
 #include "cblas.h"
 #include "syrk2_un_var1.h"
+#include "syrk2_blk_var1.h"
 
 #define UPLO FLA_UPPER_TRIANGULAR
 #define TRANS FLA_NO_TRANSPOSE
@@ -14,6 +15,7 @@
 
 #define TRUE 1
 #define FALSE 0
+#define BLOCKSIZE 4
 
 int main(int argc, char *argv[])
 {
@@ -110,6 +112,34 @@ int main(int argc, char *argv[])
     diff = FLA_Max_elemwise_diff( Cobj, Cref );
   
     printf( "data_unb_var1( %d, 1:3 ) = [ %d %le %le];\n", i, n,
+	    dtime_best, diff  );
+
+    fflush( stdout );
+
+    /* Time your blocked Variant 1 */
+
+    for ( irep=0; irep<nrepeats; irep++ ){
+      /* Copy vector yold to y */
+      FLA_Copy( Cold, Cobj );
+    
+      /* start clock */
+      dtime = FLA_Clock();
+ 
+      /* Comment out the below call and call your routine instead */
+      syrk2_blk_var1( Aobj, Bobj, Cobj, BLOCKSIZE );
+
+      /* stop clock */
+      dtime = FLA_Clock() - dtime;
+    
+      if ( irep == 0 ) 
+	dtime_best = dtime;
+      else
+	dtime_best = ( dtime < dtime_best ? dtime : dtime_best );
+    }
+
+    diff = FLA_Max_elemwise_diff( Cobj, Cref );
+  
+    printf( "data_blk_var1( %d, 1:3 ) = [ %d %le %le];\n", i, n,
 	    dtime_best, diff  );
 
     fflush( stdout );

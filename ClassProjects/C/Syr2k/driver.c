@@ -5,8 +5,8 @@
 #include "FLAME.h"
 
 #include "cblas.h"
-#include "syrk2_un_var1.h"
-#include "syrk2_blk_var1.h"
+#include "UnblockedVar1/syrk2_un_var1.h"
+#include "BlockedVar1/syrk2_blk_var1.h"
 
 #define UPLO FLA_UPPER_TRIANGULAR
 #define TRANS FLA_NO_TRANSPOSE

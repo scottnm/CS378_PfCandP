@@ -98,7 +98,7 @@ int main(int argc, char *argv[])
       dtime = FLA_Clock();
  
       /* Comment out the below call and call your routine instead */
-      Syrk2_un_unb_var1( Aobj, Bobj, Cobj );
+      syrk2_un_unb_var1( Aobj, Bobj, Cobj );
 
       /* stop clock */
       dtime = FLA_Clock() - dtime;

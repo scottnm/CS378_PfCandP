@@ -9,6 +9,7 @@
                                                                      */
 
 #include "syrk2_blk_var1.h"
+#include "../UnblockedVar1/syrk2_un_var1.h"
 #include "FLAME.h"
 
 #define UPLO FLA_UPPER_TRIANGULAR
@@ -61,6 +62,7 @@ int syrk2_blk_var1( FLA_Obj A, FLA_Obj B, FLA_Obj C, int nb_alg )
 
     /*------------------------------------------------------------*/
 
+    // unblocked version
     /*
     //c01 = A0*transpose(b1t) + B0*transpose(a1t) + c01;
     FLA_Gemv(TRANS, FLA_ONE, A0, b1t, FLA_ONE, c01);
@@ -70,6 +72,16 @@ int syrk2_blk_var1( FLA_Obj A, FLA_Obj B, FLA_Obj C, int nb_alg )
     FLA_Dots(FLA_ONE, a1t, b1t, FLA_ONE, gamma11);
     FLA_Dots(FLA_ONE, a1t, b1t, FLA_ONE, gamma11);
     */
+
+    // blocked
+    // C01 = A0 * transpose(B1) + B0 * transpose(A1) + C01;
+    FLA_Gemm( FLA_NO_TRANSPOSE, FLA_TRANSPOSE, FLA_ONE, A0, B1, FLA_ONE, C01);
+    FLA_Gemm( FLA_NO_TRANSPOSE, FLA_TRANSPOSE, FLA_ONE, B0, A1, FLA_ONE, C01);
+
+    // C11 = A1 * transpose(B1) + B1 * transpose(A1) + C11;
+    syrk2_un_unb_var1( A1, B1, C11 );
+
+
 
     /*------------------------------------------------------------*/
 
